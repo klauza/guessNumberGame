@@ -80,11 +80,12 @@ guessBtn.addEventListener('click', function(){
       //guessInput.style.borderColor = 'red';
       //clear input
       guessInput.value = '';
-      setMessage(`${guess} is not correct`, 'black');
+      setMessage(`${guess} is not correct`, 'white');
 
       // hint
       let hint;
       guess >= winningNum ? hint = 'The number is lower' : hint = 'The number is higher';
+      messageTwo.style.color ="white";
       messageTwo.innerText = hint;
       
     }
