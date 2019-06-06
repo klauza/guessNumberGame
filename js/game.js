@@ -80,7 +80,7 @@ guessBtn.addEventListener('click', function(){
       //guessInput.style.borderColor = 'red';
       //clear input
       guessInput.value = '';
-      setMessage(`${guess} is not correct, ${guessesLeft} guesses left.`, 'black');
+      setMessage(`${guess} is not correct`, 'black');
 
       // hint
       let hint;
@@ -135,4 +135,4 @@ guessInput.addEventListener("keyup", function(e) {
 });
 
 
-
+// Add ability to put own number range guess

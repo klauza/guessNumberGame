@@ -16,24 +16,32 @@
 
     <div class="row text-center mt-5">
       <div class="col">
-          
-          <i class="fa fa-arrow-circle-right" style="font-size: 3em;"></i>
         <h1>Guess the number game</h1>
       </div>
     </div>
   
-    <div class="row text-center">
-      <div class="col">
+    <div class="row text-center justify-content-center">
+      <div class="col-md-auto">
         
         <div id="game">
-          <p>Guess a number between 
+          <p class="my-3">Guess a number between 
             <span class="min-num"></span> 
             and
             <span class="max-num"></span>
           </p>
 
-          <input type="number" id="guess-input" placeholder="Enter you guess...">
-          <input type="submit" value="Submit" id="guess-btn">
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-arrow-circle-right" style="font-size: 1.5em;"></i></span>
+            </div>
+            <input type="number" class="form-control ml-3 mr-3" id="guess-input" aria-describedby="basic-addon1" placeholder="Enter you guess...">
+            <input type="submit" value="Submit" id="guess-btn">
+          </div>
+
+          
+          <!-- <input type="number" id="guess-input" placeholder="Enter you guess..."> -->
+          
        
           <p class="message"></p>
           
