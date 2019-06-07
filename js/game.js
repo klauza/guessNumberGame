@@ -1,25 +1,17 @@
 
 
 
-/*
-Game function
-- player must guess a number between a min and max
-- player getrs a certain amount of guesses
-- notify player of guesses remaining
-- notify the player of the correct answer if loose
-- let player choose to play again
-*/
 
 // Game values
 let min = 1,
     max = 100,
     winningNum = getRandomNum(min, max),
+    
     guessesLeft = 5;
-
+// used for hints
 let lower=min, 
 upper=max;
   
-
 // UI Elements
 const game = document.querySelector('#game'),
       minNum = document.querySelector('.min-num'),
@@ -31,6 +23,8 @@ const game = document.querySelector('#game'),
       
       guessesCounter = document.querySelector('.guess-left');
       messageThree = document.querySelector('.messageThree');
+document.querySelector('div[type=button]').style.pointerEvents = "none"; // disable the guess counter button
+
 
 // Assign UI min and max
 minNum.textContent = min;
@@ -50,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 game.addEventListener('mousedown', function(e){
   if(e.target.className === 'play-again'){
     window.location.reload();
-
   }
 })
 
@@ -67,6 +60,7 @@ guessBtn.addEventListener('click', function(){
   // Validate
   if(isNaN(guess) || guess < min || guess > max){
     setMessage(`Please enter a number between ${min} and ${max}`, 'red');
+    guessInput.value = '';
     return null;
   }
 
@@ -74,6 +68,7 @@ guessBtn.addEventListener('click', function(){
   // check if won
   if(guess === winningNum){
   gameOver(true, `${winningNum} is correct, You WIN!`);
+  // hide parahraphs and counter button
   messageTwo.textContent = '';
   messageThree.textContent = '';
     
@@ -91,19 +86,20 @@ guessBtn.addEventListener('click', function(){
     } else {
       //Game continues - answer wrong
       //guessInput.style.borderColor = 'red';
+
       //clear input
       guessInput.value = '';
       setMessage(`${guess} is not correct`, 'white');
-
+      
       // hint
       let hint;
       guess >= winningNum ? hint = 'The number is lower' : hint = 'The number is higher';
-      messageTwo.style.color ="white";
+      messageTwo.style.color ="#dbd032";
       messageTwo.textContent = hint;
       
     }
   }
-  
+
 })
 
 // FUNCTIONS
@@ -120,9 +116,8 @@ function gameOver(won, msg){
 
   // set winning message
   setMessage(msg);
-  
 
-  //Play again?
+  // Play again?
   guessBtn.value = 'Play Again';
   guessBtn.classList.add('play-again');
 }

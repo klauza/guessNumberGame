@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-  <title>Guess game</title>
+  <title>Guess a number game</title>
   <style>
     html{
       height: 100vh;
@@ -17,6 +17,7 @@
       position: relative;
       height: 100%;
     }
+    
     body::after{
       content: "";
       background-image: url("./bg/numbers.gif");
@@ -28,6 +29,48 @@
       position: absolute;
       z-index: -1;  
     }
+    #game{
+      position: relative;
+      padding: 0 50px;
+    }
+    #game::before{
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 1px;
+      background: white;
+      height: 100%;
+    }
+    #game::after{
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px;
+      background: white;
+      height: 100%;
+    }
+    #guess-btn{
+      min-width: 90px;
+    }
+    .message, .messageTwo, .messageThree{
+      min-height: 40px;
+      box-sizing: border-box;
+    }
+    /*
+    .magic-hide{
+      animation: animation 1s forwards;
+    }
+
+    @keyframes animation{
+      0%{
+        opacity: 1;
+      }
+      100%{
+        opacity: 0;
+      }
+    }
+    */
+
   </style>
 </head>
 <body>
@@ -37,7 +80,7 @@
 
     <div class="row text-center pt-5">
       <div class="col">
-        <h1 class="text-white">Guess the number game</h1>
+        <h1 class="text-white">Guess a number game</h1>
       </div>
     </div>
   
@@ -66,14 +109,13 @@
        
           <p class="message"></p>
           
-
-          <div type="button" class="btn btn-warning">
-            Guesses left <span class="badge badge-light guess-left"></span>
-          </div>
-
           <p class="messageTwo mt-3"></p>
 
           <p class="messageThree text-white">X</p>
+
+          <div type="button" class="btn btn-warning guess-counter-btn">
+            Guesses left <span class="badge badge-light guess-left"></span>
+          </div>
 
         </div>
 
