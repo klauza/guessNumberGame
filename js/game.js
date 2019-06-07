@@ -1,3 +1,6 @@
+
+
+
 /*
 Game function
 - player must guess a number between a min and max
@@ -12,6 +15,9 @@ let min = 1,
     max = 100,
     winningNum = getRandomNum(min, max),
     guessesLeft = 5;
+
+let lower=min, 
+upper=max;
   
 
 // UI Elements
@@ -22,18 +28,21 @@ const game = document.querySelector('#game'),
       guessInput = document.querySelector('#guess-input'),
       message = document.querySelector('.message');
       messageTwo = document.querySelector('.messageTwo');
+      
       guessesCounter = document.querySelector('.guess-left');
+      messageThree = document.querySelector('.messageThree');
 
 // Assign UI min and max
 minNum.textContent = min;
 maxNum.textContent = max;
 
 // set guesses counter
-guessesCounter.innerText = guessesLeft;
+guessesCounter.textContent = guessesLeft;
 
 //focus input on when page load
 document.addEventListener("DOMContentLoaded", () => {
   guessInput.focus();
+ 
 })
 
 
@@ -48,10 +57,12 @@ game.addEventListener('mousedown', function(e){
 
 // Listen for guess
 guessBtn.addEventListener('click', function(){
-  console.log(guessInput.value); // it's text
-  console.log(parseInt(guessInput.value)); // it's a number | NaN if input empty
+  // console.log(guessInput.value); // it's text
+  // console.log(parseInt(guessInput.value)); // it's a number | NaN if input empty
   // so need to check for that (validate)
   let guess = parseInt(guessInput.value);
+
+  setHintRange(guess);
 
   // Validate
   if(isNaN(guess) || guess < min || guess > max){
@@ -63,16 +74,18 @@ guessBtn.addEventListener('click', function(){
   // check if won
   if(guess === winningNum){
   gameOver(true, `${winningNum} is correct, You WIN!`);
-  messageTwo.innerText = '';
+  messageTwo.textContent = '';
+  messageThree.textContent = '';
     
   } else {
     // Wrong number
     guessesLeft -= 1;
-    guessesCounter.innerText = guessesLeft;
+    guessesCounter.textContent = guessesLeft;
 
     if(guessesLeft === 0){
       //Game is lost
-      messageTwo.innerText = '';
+      messageTwo.textContent = '';
+      messageThree.textContent = '';
       gameOver(false, `Game over, you lost. The correct number was ${winningNum}`)
       
     } else {
@@ -86,7 +99,7 @@ guessBtn.addEventListener('click', function(){
       let hint;
       guess >= winningNum ? hint = 'The number is lower' : hint = 'The number is higher';
       messageTwo.style.color ="white";
-      messageTwo.innerText = hint;
+      messageTwo.textContent = hint;
       
     }
   }
@@ -125,9 +138,6 @@ function setMessage(msg, color){
   message.textContent = msg;
 }
 
-
-
-
 //submit number on enter hit
 guessInput.addEventListener("keyup", function(e) {
   if (e.keyCode === 13) {
@@ -136,4 +146,28 @@ guessInput.addEventListener("keyup", function(e) {
 });
 
 
-// Add ability to put own number range guess
+// Set number range hint
+messageThree.textContent = '';
+let threeContent = `your number is between ${min} and ${max}`;
+messageThree.textContent = threeContent;
+
+function setHintRange(guess){
+  
+  // Set lower range-number
+  if(guess > lower && guess < winningNum){
+    lower = guess;
+    messageThree.textContent = `your number is between ${lower} and ${upper}`;
+  } else 
+    // Set higher range-number
+    if(guess < upper && guess > winningNum){
+      upper = guess;
+      messageThree.textContent = `your number is between ${lower} and ${upper}`;
+    } else {
+      return null
+      }
+}
+
+
+// Add ability to put own number of range-guess
+
+
