@@ -1,5 +1,5 @@
 ## The guess game
 
-- Live version: `null`
+- Live version: `1.0.0`
 <br/>
-*the initiative thanks to Brad Traversy*
+* the initiative started thanks to Brad Traversy *
