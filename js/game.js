@@ -1,5 +1,13 @@
 
 
+// [] make a pop-up button that opens a form which lets you change min-max range and number of guesses
+
+// [] disable custom input on game start
+// [] enable custom input on game end
+
+// save change data to local storage so the player will be able to use previous data when page refreshes
+
+
 
 
 // Game values
