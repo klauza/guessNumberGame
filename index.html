@@ -61,51 +61,86 @@
     </div>
 
 
-    <!-- CUSTOM INPUTS -->
+   
   
 
-    <form>
-      <h4 class="text-info text-center">Custom number range - make a challenge for yourself!</h4>
-      <p class="text-danger text-center">New details will reset your current game!</p>
-      <div class="row col-md-6 mx-auto">
+    
+    <!-- Modal -->
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-info text-center" id="exampleModalLabel">Change range - make a challenge for yourself!</h5>
+          </div>
+          <div class="modal-body">
+            
+               <!-- CUSTOM INPUTS -->
+              <form>
+                  
+                  <p class="text-danger text-center">Setting new details will reset your current game!</p>
+                  <div class="row">
+            
+                    <div class="form-group mx-auto col-xs-2">
+                      <!-- if you add a class 'is-invalid' here, the 'invalid-feedback' div will show on -->
+                      <input type="number" class="form-control" id="guest-guess-input-min" placeholder="Number from">
+                      <div class="invalid-feedback text-wrap">
+                        Must be a positive integer <br> and lower than maximum value
+                      </div>
+                    </div>
 
-        <div class="form-group mx-auto">
-          <!-- if you add a class 'is-invalid' here, the 'invalid-feedback' div will show on -->
-          <input type="number" class="form-control" id="guest-guess-input-min" placeholder="Number from">
-          <div class="invalid-feedback">
-            Must be a positive integer and lower than maximum value
+                    <h2 class="text-black"> - </h2>
+
+                    <div class="col-xs-2 form-group mx-auto">
+                      <input type="number" class="form-control" id="guest-guess-input-max" placeholder="Number to">
+                      <div class="invalid-feedback">
+                        Must be a positive integer <br> and higher than minimum value
+                      </div>
+                    </div>
+            
+                  </div>
+            
+                  <div class="form-group col-md-4 mx-auto text-center">
+                    <label class="text-black">Guesses count</label>
+                    <input type="number" class="form-control" id="guest-guesses-input" placeholder="guesses">
+                    <div class="invalid-feedback">
+                        Must be a positive integer
+                    </div>
+                  </div>
+
+                  <p class="text-black text-center">Stop being just a guest and put your name</p>
+                  <div class="form-group col-md-4 mx-auto text-center">
+                    
+                    <input type="text" class="form-control" id="guest-name-input" placeholder="Your name is...">
+                    <div class="invalid-feedback">
+                        Put letters only and you can't excess 10 characters!
+                    </div>
+                  </div>
+
+                  <p class="somethin-wrong text-danger d-none text-center">Whoops! Something is wrong, check the input fields.</p>
+
+                  <input type="submit" id="submit-custom-data" valid="Submit" class="btn btn-primary btn-block col-md-2 mx-auto">
+                </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
           </div>
         </div>
-        <h2 class="text-white"> - </h2>
-        <div class="form-group mx-auto">
-          <input type="number" class="form-control" id="guest-guess-input-max" placeholder="Number to">
-          <div class="invalid-feedback">
-            Must be a positive integer and higher than minimum value
-          </div>
-        </div>
-
       </div>
+  </div>
 
-      <div class="form-group col-md-4 mx-auto text-center">
-        <label class="text-white">Guesses count</label>
-        <input type="number" class="form-control" id="guest-guesses-input" placeholder="guesses">
-        <div class="invalid-feedback">
-            Must be a positive integer
-        </div>
+    <!-- Button which opens the modal -->
+    <div class="container">
+      <div class="row text-center justify-content-center">
+        <button type="button" class="open-modal-button btn btn-primary text-center mt-5" data-toggle="modal" data-target="#exampleModal">
+            Put own values
+        </button>
       </div>
+    </div>
 
-      <div class="form-group col-md-4 mx-auto text-center">
-        <label class="text-white">Stop being just a guest and put your name</label>
-        <input type="text" class="form-control" id="guest-name-input" placeholder="Your name is...">
-        <div class="invalid-feedback">
-            Put letters only and you can't excess 10 characters!
-        </div>
-      </div>
-      
-      <input type="submit" id="submit-custom-data" valid="Submit" class="btn btn-primary btn-block col-md-2 mx-auto">
-    </form>
-
-    <button class="test">DISPLAY DATA FROM LOCALSTORE IN CONSOLE</button>
+    <!-- for testing purposes -->
+    <button style="display: none;" class="test">DISPLAY DATA FROM LOCALSTORE INTO CONSOLE</button>
 
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
