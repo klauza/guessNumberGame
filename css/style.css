@@ -1,0 +1,61 @@
+html{
+  height: 100vh;
+}
+body{
+  background-color: rgba(0, 0, 0);
+  position: relative;
+  height: 100%;
+}
+
+body::after{
+  content: "";
+  background-image: url("../bg/numbers.gif");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;  
+}
+#game{
+  position: relative;
+  padding: 0 50px;
+}
+#game::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px;
+  background: white;
+  height: 100%;
+}
+#game::after{
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 1px;
+  background: white;
+  height: 100%;
+}
+#guess-btn{
+  min-width: 90px;
+}
+.message, .messageTwo, .messageThree{
+  min-height: 40px;
+  box-sizing: border-box;
+}
+/*
+.magic-hide{
+  animation: animation 1s forwards;
+}
+
+@keyframes animation{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+*/
