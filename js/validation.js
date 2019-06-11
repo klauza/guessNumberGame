@@ -89,7 +89,7 @@ function validateName(){
 
   const re = /^[a-z]{1,10}$/i; // max 10 chars
 
-  console.log(nameInput.value);
+  
   
   if(!re.test(nameInput.value)){ 
     nameInput.classList.add('is-invalid');

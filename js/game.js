@@ -1,5 +1,5 @@
 // [ok] validate new data using Regular Expressions
-// [] save user's new data to local storage
+// [ok] save user's new data to local storage
 // [] put user's data from local storage into game, if it is set
 // [] make refresh after user provide new data into local storage
 // [] hide name-input in form if the user has put his name already
@@ -182,3 +182,4 @@ function setHintRange(guess){
       return null
       }
 }
+

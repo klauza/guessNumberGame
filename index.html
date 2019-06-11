@@ -7,72 +7,9 @@
   <link rel="icon" href="./icon/icon.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="./css/style.css" />
   <title>Guess a number game</title>
-  <style>
-    html{
-      height: 100vh;
-    }
-    body{
-      background-color: rgba(0, 0, 0);
-      position: relative;
-      height: 100%;
-    }
-    
-    body::after{
-      content: "";
-      background-image: url("./bg/numbers.gif");
-      opacity: 0.5;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      position: absolute;
-      z-index: -1;  
-    }
-    #game{
-      position: relative;
-      padding: 0 50px;
-    }
-    #game::before{
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 1px;
-      background: white;
-      height: 100%;
-    }
-    #game::after{
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 1px;
-      background: white;
-      height: 100%;
-    }
-    #guess-btn{
-      min-width: 90px;
-    }
-    .message, .messageTwo, .messageThree{
-      min-height: 40px;
-      box-sizing: border-box;
-    }
-    /*
-    .magic-hide{
-      animation: animation 1s forwards;
-    }
-
-    @keyframes animation{
-      0%{
-        opacity: 1;
-      }
-      100%{
-        opacity: 0;
-      }
-    }
-    */
-
-  </style>
+ 
 </head>
 <body>
   <div class="container">
@@ -141,7 +78,6 @@
         </div>
         <h2 class="text-white"> - </h2>
         <div class="form-group mx-auto">
-          <!-- if you add a class 'is-invalid' here, the 'invalid-feedback' div will show on -->
           <input type="number" class="form-control" id="guest-guess-input-max" placeholder="Number to">
           <div class="invalid-feedback">
             Must be a positive integer and higher than minimum value
@@ -166,13 +102,18 @@
         </div>
       </div>
       
-      <input type="submit" valid="Submit" class="btn btn-primary btn-block col-md-2 mx-auto">
+      <input type="submit" id="submit-custom-data" valid="Submit" class="btn btn-primary btn-block col-md-2 mx-auto">
     </form>
+
+    <button class="test">DISPLAY DATA FROM LOCALSTORE IN CONSOLE</button>
 
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="js/store.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/validation.js"></script>
+
 </body>
 </html>
