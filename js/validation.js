@@ -64,7 +64,8 @@ function validateMax(){
     } 
   }
 
-  else {
+  else { 
+    //it's valid!
     maxInput.classList.remove('is-invalid');
     maxInput.classList.remove('is-invalid');
   }

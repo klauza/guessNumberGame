@@ -28,7 +28,6 @@ class Store{
       // for now only in console
      
     
-      
     });
   }
 
@@ -44,20 +43,6 @@ class Store{
     data.push(singleData);
 
     localStorage.setItem('data', JSON.stringify(data));
-  }
-
-  static removeData(isbn){
-    const books = Store.getBooks();
-    localStorage.getItem('data') === null;
-
-    /*
-    books.forEach(function(book, index){
-     if(book.isbn === isbn){
-       books.splice(index, 1);
-     }
-    });
-    */
-    localStorage.setItem('books', JSON.stringify(books));
   }
 
 }
@@ -83,7 +68,11 @@ document.getElementById('submit-custom-data').addEventListener('click', function
       {
     // Error alert
     console.log('Problem');
-    // create paragraph which tells the user that something went wrong and has to re-check the input fields
+    // paragraph which tells the user that something went wrong and has to re-check the input fields
+
+    document.querySelector('.somethin-wrong').classList.remove('d-none');
+    hideWarning();
+
     e.preventDefault();
 
   } else {
@@ -94,7 +83,7 @@ document.getElementById('submit-custom-data').addEventListener('click', function
     const guessesData = document.querySelector('#guest-guesses-input').value;
     const nameData = document.querySelector('#guest-name-input').value;
     
-
+    // store data into LS
     const data = new Data(minData, maxData, guessesData, nameData);
 
     Store.addData(data);
@@ -107,23 +96,24 @@ document.getElementById('submit-custom-data').addEventListener('click', function
 });
 
 
+function hideWarning(){
+
+  setTimeout(function(){
+    document.querySelector('.somethin-wrong').classList.add('d-none');
+  }, 2500);
+  
+}
+
 
 /* for testing purposes */
-document.querySelector('.test').addEventListener('click', function(e){
 
-  const data = Store.getData();
+// document.querySelector('.test').addEventListener('click', function(e){
 
-  Store.displayData(data);
+//   const data = Store.getData();
 
-  e.preventDefault();
-});
+//   Store.displayData(data);
+
+//   e.preventDefault();
+// });
 
 
-/*
-clearFields(){
-  document.getElementById('title').value = '';
-  document.getElementById('author').value = '';
-  document.getElementById('isbn').value = '';
-  document.getElementById('title').focus();
-}
-*/

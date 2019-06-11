@@ -2,14 +2,13 @@
 // [ok] save user's new data to local storage
 // [ok] put user's data from local storage into game, if it is set
 // [ok] make refresh after user provide new data into local storage
-// [] hide name-input in form if the user has put his name already
+// [solved] hide name-input in form if the user has put his name already
 //    but also add a button to show the input
 // [] refactor the code
 
 
 // CSS
-// [] make a pop-up button that opens a form 
-
+// [ok] make a pop-up button that opens a form 
 
 
 
@@ -54,14 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
   //get data
   data = Store.getData();
 
-  // local storage if
+  // local storage if not set
   if(localStorage.getItem('data') === null){
     // standard game values
     console.log('standard');
 
     min = 1,
     max = 100,
-    
     guessesLeft = 5,
     name = 'guest';
 
@@ -70,9 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   } else{
     // user's game values
-    console.log("user's values");
-    // get user's game values
-    
+   
+    // get user's values from LS
     data = Store.getData();
 
     //Store.displayData();
@@ -92,13 +89,22 @@ document.addEventListener("DOMContentLoaded", () => {
   minNum.textContent = min;
   maxNum.textContent = max;
   winningNum = getRandomNum(min, max),
-  console.log(min, max);
-  console.log(winningNum);
+
+// Set number range hint
+messageThree.textContent = '';
+let threeContent = `your number is between ${min} and ${max}`;
+messageThree.textContent = threeContent;
+
+
+  // console.log(min, max);
+  // console.log(winningNum);
   guessInput.focus();
 })
 
 
 
+// Clear modal inputs on clicking close button
+document.querySelector('.close-modal').addEventListener('click', clearInputForm);
 
 
 // Play again event listener
@@ -163,6 +169,18 @@ guessBtn.addEventListener('click', function(){
 
 })
 
+//submit number on enter hit
+guessInput.addEventListener("keyup", function(e) {
+  if (e.keyCode === 13) {
+    guessBtn.click();
+  }
+});
+
+
+
+
+
+
 // FUNCTIONS for Actual game
 
 // Game over
@@ -200,18 +218,6 @@ function setMessage(msg, color){
   message.textContent = msg;
 }
 
-//submit number on enter hit
-guessInput.addEventListener("keyup", function(e) {
-  if (e.keyCode === 13) {
-    guessBtn.click();
-  }
-});
-
-
-// Set number range hint
-messageThree.textContent = '';
-let threeContent = `your number is between ${min} and ${max}`;
-messageThree.textContent = threeContent;
 
 function setHintRange(guess){
   
@@ -229,3 +235,42 @@ function setHintRange(guess){
       }
 }
 
+// Clear inputs in form
+
+function clearInputForm(){
+
+  const minInput = document.querySelector('#guest-guess-input-min');
+  const maxInput = document.querySelector('#guest-guess-input-max');
+  const guessesInput = document.querySelector('#guest-guesses-input');
+  const nameInput = document.querySelector('#guest-name-input');
+
+  minInput.value = '';
+  minInput.classList.remove('is-invalid');
+  maxInput.value = '';
+  maxInput.classList.remove('is-invalid');
+  guessesInput.value = '';
+  guessesInput.classList.remove('is-invalid');
+  nameInput.value = '';
+  nameInput.classList.remove('is-invalid');
+
+}
+
+// prevent exiting form modal by click outside of it
+$('#exampleModal').modal({
+  backdrop: 'static', 
+  keyboard: false, 
+  show: false
+});  
+// backdrop: static -> doesn't close the modal when clicking outside of it
+// keyboard: false -> doesnt' close the modal on ESC press
+// show: false -> doesn't open up when page loads
+
+
+
+// Put name if set
+document.querySelector('.open-modal-button').addEventListener('click', function(){
+  //get data
+  data = Store.getData();
+  console.log(data[0].nameData);
+  document.getElementById('guest-name-input').value = data[0].nameData;
+})
