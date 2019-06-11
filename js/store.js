@@ -26,11 +26,13 @@ class Store{
     data.forEach(function(singleData){
       console.log(singleData);
       // for now only in console
+     
     
       
     });
   }
 
+  // add data from user to localstorage
   static addData(singleData){
     // delete previous data.. 
     localStorage.removeItem('data');
@@ -99,7 +101,7 @@ document.getElementById('submit-custom-data').addEventListener('click', function
 
     Store.displayData(data);
 
-    e.preventDefault();
+    // page refreshes on submit if the form is valid
   }
 
 });
