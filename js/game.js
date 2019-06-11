@@ -1,8 +1,10 @@
 // [ok] validate new data using Regular Expressions
 // [ok] save user's new data to local storage
-// [] put user's data from local storage into game, if it is set
-// [] make refresh after user provide new data into local storage
+// [ok] put user's data from local storage into game, if it is set
+// [ok] make refresh after user provide new data into local storage
 // [] hide name-input in form if the user has put his name already
+//    but also add a button to show the input
+// [] refactor the code
 
 
 // CSS
@@ -16,15 +18,15 @@
 
 
 // Game values
-let min = 1,
-    max = 100,
-    winningNum = getRandomNum(min, max),
-    guessesLeft = 5,
+let min,
+    max,
+    winningNum,
+    guessesLeft,
     name;
 
 // used for hints
-let lower=min, 
-upper=max;
+let lower, 
+upper;
   
 // UI Elements
 const game = document.querySelector('#game'),
@@ -43,22 +45,60 @@ document.querySelector('div[type=button]').style.pointerEvents = "none"; // disa
 
 
 
+/*                      GAME-on                        */
 
-// Assign UI min and max
-minNum.textContent = min;
-maxNum.textContent = max;
-
-// set guesses counter
-guessesCounter.textContent = guessesLeft;
 
 //focus input on when page load
 document.addEventListener("DOMContentLoaded", () => {
 
+  //get data
+  data = Store.getData();
+
   // local storage if
-  guestName.textContent = 'Hello guest';
-  
+  if(localStorage.getItem('data') === null){
+    // standard game values
+    console.log('standard');
+
+    min = 1,
+    max = 100,
+    
+    guessesLeft = 5,
+    name = 'guest';
+
+    lower=min;
+    upper=max;
+
+  } else{
+    // user's game values
+    console.log("user's values");
+    // get user's game values
+    
+    data = Store.getData();
+
+    //Store.displayData();
+    min = data[0].minData;
+    max = data[0].maxData;
+    guessesLeft = data[0].guessesData;
+    name = data[0].nameData;
+
+    lower=min;
+    upper=max;
+
+  }
+  guestName.textContent = `Hello ${name.toUpperCase()} !`;    // set guest's name
+  guessesCounter.textContent = guessesLeft;   // set guesses counter
+
+  // Assign UI min and max
+  minNum.textContent = min;
+  maxNum.textContent = max;
+  winningNum = getRandomNum(min, max),
+  console.log(min, max);
+  console.log(winningNum);
   guessInput.focus();
 })
+
+
+
 
 
 // Play again event listener
@@ -145,7 +185,13 @@ function gameOver(won, msg){
 
 // get random number as a winning number
 function getRandomNum(min, max){
-  return Math.floor(Math.random()*(max-min+1)+min);
+  
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min +1)) + min;
+
+  //return Math.floor( Math.random()*(max-min+1)+min );
+  //return Math.floor(Math.random() * max) + min  
 }
 
 // set message function
