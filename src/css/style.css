@@ -9,7 +9,7 @@ body{
 
 body::after{
   content: "";
-  background-image: url("../bg/numbers.gif");
+  background-image: url("../media/numbers.gif");
   opacity: 0.5;
   top: 0;
   left: 0;
