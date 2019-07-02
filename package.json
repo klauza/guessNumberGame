@@ -1,0 +1,23 @@
+{
+  "name": "guess-a-number",
+  "version": "1.0.0",
+  "description": "number guesser project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klauza/guessNumberGame.git"
+  },
+  "keywords": [],
+  "author": "klauza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klauza/guessNumberGame/issues"
+  },
+  "homepage": "https://guess-a-number-klauza.netlify.com/",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
