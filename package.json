@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "number guesser project",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/klauza/guessNumberGame.git"
@@ -19,5 +17,8 @@
   "homepage": "https://guess-a-number-klauza.netlify.com/",
   "devDependencies": {
     "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "serve": "^11.3.2"
   }
 }
